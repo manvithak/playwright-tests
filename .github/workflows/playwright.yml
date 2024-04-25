@@ -16,16 +16,16 @@ jobs:
     - name: Build Docker image
       run: docker build -t playwright-tests .
     - name: Run Playwright tests on Docker
-      run: docker run --name playwright-tests -v $(pwd)/playwright-reports:/app/playwright-reports:rw playwright-tests
-    - name: Echo PWD
-      run: ls
-    - name: echo ws
-      run: echo '${{ github.workspace }}'
-    - name: Copy Playwright reports
-      run: sudo docker cp playwright-tests:/app/playwright-report ${{ github.workspace }}
+      run: docker run --name playwright-tests -v $(pwd)/playwright-report:/app/playwright-report:rw playwright-tests
+    # - name: Echo PWD
+    #   run: ls
+    # - name: echo ws
+    #   run: echo '${{ github.workspace }}'
+    # - name: Copy Playwright reports
+    #   run: sudo docker cp playwright-tests:/app/playwright-report ${{ github.workspace }}
 
-    - name: ls
-      run: cd playwright-reports && ls
+    # - name: ls
+    #   run: cd playwright-reports && ls
       
     - uses: actions/upload-artifact@v3
       if: always()
