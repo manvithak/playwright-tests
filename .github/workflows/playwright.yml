@@ -20,9 +20,9 @@ jobs:
     - name: Echo PWD
       run: ls
     - name: echo ws
-      run: echo '${{ github.workspace }}
-    # - name: Copy Playwright reports
-    #   run: docker cp playwright-tests:/app/playwright-reports ./playwright-reports
+      run: echo '${{ github.workspace }}'
+    - name: Copy Playwright reports
+      run: docker cp playwright-tests:/app/playwright-reports/ ${{ github.workspace }}/playwright-reports
       
     - uses: actions/upload-artifact@v3
       if: always()
