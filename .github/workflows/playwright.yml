@@ -16,7 +16,7 @@ jobs:
     - name: Build Docker image
       run: docker build -t playwright-tests .
     - name: Run Playwright tests on Docker
-      run: docker run --name playwright-tests playwright-tests
+      run: docker run --name playwright-tests playwright-tests -v $(pwd)/playwright-reports:/app/playwright-reports:rw
     - name: Echo PWD
       run: ls
     - name: echo ws
