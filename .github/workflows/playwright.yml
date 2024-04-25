@@ -22,11 +22,14 @@ jobs:
     - name: echo ws
       run: echo '${{ github.workspace }}'
     - name: Copy Playwright reports
-      run: sudo docker cp playwright-tests:/app/playwright-reports .
+      run: sudo docker cp playwright-tests:/app/playwright-reports ${{ github.workspace }}
+
+    - name: ls
+      run: cd playwright-reports && ls
       
     - uses: actions/upload-artifact@v3
       if: always()
       with:
         name: playwright-report
-        path: '${{ pwd }}/playwright-reports'
+        path: '${{ github.workspace }}/playwright-reports'
         retention-days: 30
