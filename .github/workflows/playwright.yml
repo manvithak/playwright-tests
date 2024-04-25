@@ -22,7 +22,7 @@ jobs:
     - name: echo ws
       run: echo '${{ github.workspace }}'
     - name: Copy Playwright reports
-      run: sudo docker cp -r playwright-tests:/app/playwright-reports ${{ github.workspace }}/
+      run: sudo docker cp playwright-tests:/app/playwright-reports/ ${{ github.workspace }}/
       
     - uses: actions/upload-artifact@v3
       if: always()
